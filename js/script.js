@@ -20,10 +20,40 @@ const criarTabuleiro = () => {
         for(let j = 0; j < tabuleiro[i].length; j++){
             const celula = document.createElement('div');
             celula.classList.add('celula')
-            celula.id = `${[j]}`;
+            celula.id = `${i}${[j]}`;
             coluna.appendChild(celula);
         }
         boxJogo.appendChild(coluna);
     }
 }
 criarTabuleiro();
+
+/* roberto */
+
+let actualPlayer = true;
+
+const makeCheckers = () => {
+    const checker = document.createElement('div');
+    
+    checker.classList.add('checker');
+    checker.classList.add('checkerUSA');
+    
+    return checker;
+}
+
+
+const gamePlay = (e) => {
+    
+    console.log(e.target.id)
+    const destino = document.getElementById(e.target.id);
+    makeCheckers();
+    destino.appendChild(makeCheckers());
+    
+}
+
+
+boxJogo.addEventListener('click', gamePlay);
+
+
+
+/* roberto */
