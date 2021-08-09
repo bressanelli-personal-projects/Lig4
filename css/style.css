@@ -35,13 +35,51 @@ header{
 .celula{
     width: 39px;
     height: 39px;
-    margin: 0 auto;
+    margin: 0 auto;    
     border-bottom: 4px solid black;
 }
 
 .celula:first-child{
     border-bottom: none;
 }
+
+
+/* roberto */
+
+
+
+.checker {
+    width: 88px;
+    height: 88px;
+    border: 2px solid #d8cab3;
+    border-radius: 100%;
+    box-shadow: inset 0px 0px 15px 5px #fff;
+}
+
+.checkerUSA {
+    background-image: url(../img/logoUSA.png);
+    background-size: 88px;
+}
+
+.checkerURSS {
+    background-image: url(../img/logoURSS.png);
+    background-size: 88px;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-image: url(../img/background.png);    
+}
+
+
+/* roberto */
+    
+
+
 
 @media screen and (min-width: 750px){
     header{
