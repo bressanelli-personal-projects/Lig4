@@ -102,7 +102,17 @@ criarTabuleiro();
 
 let actualPlayer = true;
 
-let startDrop = {
+let startDropMobile = {
+    '0': -250,
+    '1': -210,
+    '2': -170,
+    '3': -130,
+    '4': -100,
+    '5': -50,
+    '6': 5
+}
+
+let startDropDesktop = {
     '0': -500,
     '1': -400,
     '2': -310,
@@ -111,51 +121,57 @@ let startDrop = {
     '5': -40,
     '6': 5
 }
+ 
+
 
 const makeCheckers = (e) => {
-
-    const destino = document.getElementById(e.target.id);
-    console.log(e.target.id)
+    
+    const destino = document.getElementById(e.target.id);    
     const checker = document.createElement('div');    
-    checker.classList.add('checker')   
-
+    checker.classList.add('checker') 
+    
+   
     if(destino !== null){
         let variavel = destino.childElementCount;
         if(destino.childElementCount < 6) {
-            if(actualPlayer){
-            
+            if(actualPlayer){            
             checker.classList.remove('urss')
             checker.classList.add('usa');                 
-            // checker.style.setProperty('--positionUsa', `${startDrop[variavel]}px`)                      
+            checker.style.setProperty('--positionUsaMobile', `${startDropMobile[variavel]}px`)                      
+            checker.style.setProperty('--positionUsaDesktop', `${startDropDesktop[variavel]}px`)                      
             actualPlayer = false;
-            destino.appendChild(checker);
+            destino.appendChild(checker);            
         } else {
             checker.classList.remove('usa')
             checker.classList.add('urss');
-            // checker.style.setProperty('--positionUrss', `${startDrop[variavel]}px`)                
+            checker.style.setProperty('--positionUrssMobile', `${startDropMobile[variavel]}px`)                
+            checker.style.setProperty('--positionUrssDesktop', `${startDropDesktop[variavel]}px`)                
             actualPlayer = true;
             destino.appendChild(checker);
-        } 
+        }        
         
-    
     }
-    } 
-    console.log(checker)
-    return checker;
+    nextGamer(actualPlayer); 
+    }    
+    
+
+}
+
+const nextGamer = (player) => {
+    const next = document.getElementById('nextPlayer');
+    
+    if(actualPlayer) {
+        next.classList.remove('flagUrss');
+        next.classList.add('flagUsa');    
+    
+    } else {
+        next.classList.remove('flagUsa');
+        next.classList.add('flagUrss');
+    }
 }
 
 
-// const gamePlay = (e) => {
-    
-//     console.log(boxJogo.lastElementChild.id)
-//     const destino = document.getElementById(e.target.id);    
-//     destino.appendChild(makeCheckers());    
-    
-    
-// }
-
-
-
+nextGamer(actualPlayer); 
 
 boxJogo.addEventListener('click', makeCheckers);
 

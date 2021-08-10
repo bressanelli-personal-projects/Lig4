@@ -3,16 +3,28 @@
 :root{
     --color-white: #fff;
     --color-black: #000;
-    --color-red: #f0afaf;
+    --color-red: #9297d3;
     --color-gold: #ffd700;
-    --positionUsa: -500px;
-    --positionUrss: -500px;
+    --positionUsaMobile: -250px;
+    --positionUrssMobile: -250px;
+    --positionUsaDesktop: -500px;
+    --positionUrssDesktop: -500px;
 }
 
 html,body,div,header,section,h1,h2,h3,p,img,button{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-image: url(../img/background.png); 
+    background-size: 100%;
 }
 
 /*Manoela*/
@@ -57,20 +69,17 @@ header{
 
 /* roberto */
 
-
-
 .checker {
     width: 38px;
     height: 38px;
     border: 2px solid #d8cab3;
     border-radius: 100%;
-    box-shadow: inset 0px 0px 15px 5px #fff; 
+    box-shadow: inset 0px 0px 15px 2px #fff; 
     /* position: relative;
     animation-name: example;
     animation-duration: 2s;
     animation-direction: normal;   */
-}
-         
+}      
 
 
 
@@ -93,23 +102,40 @@ header{
 }
 
 @keyframes dropDownUsa {
-    0% {top: var(--positionUsa)}
+    0% {top: var(--positionUsaMobile)}
     100% {top: 0px}
 }
 
 @keyframes dropDownUrss {
-    0% {top: var(--positionUrss)}
+    0% {top: var(--positionUrssMobile)}
     100% {top: 0px}
 }
 
-html {
-    height: 100%;
+p#proximo {
+    font-size: 25px;
+    font-weight: 700; 
+    margin-top: 40px;
+    /* padding: 30px; */
+    display: inline-block;
 }
 
-body {
-    height: 100%;
-    background-image: url(../img/background.png); 
+div#nextPlayer {
+    width: 90px;
+    height: 90px; 
+    float: right;      
 }
+
+div.flagUsa {
+    background-image: url(/img/logoUSA.png);
+    background-size: 90px;    ;
+}
+
+div.flagUrss {
+    background-image: url(/img/logoURSS.png);
+    background-size: 90px;
+    border-radius: 100%;
+}
+
 
 
 /* roberto */
@@ -124,12 +150,39 @@ body {
 
     #container{
         width: 662px;
-        height: 548px;
+        height: 638px;
     }
 
     .coluna{
         width: 96px;
-        height: 548px;
+        height: 638px;
+        box-shadow: inset 0px 40px 5px 0px var(--color-red), 0 0 1.5em var(--color-gold);
     }
+
+    /* roberto */
+
+    .checker {
+        width: 90px;
+        height: 90px;
+        border: 2px solid #d8cab3;
+        border-radius: 100%;
+        box-shadow: inset 0px 0px 15px 5px #fff;       
+    }
+
+    .usa , .urss{
+        background-size: 90px;
+    }
+
+    @keyframes dropDownUsa {
+        0% {top: var(--positionUsaDesktop)}
+        100% {top: 0px}
+    }
+    
+    @keyframes dropDownUrss {
+        0% {top: var(--positionUrssDesktop)}
+        100% {top: 0px}
+    }
+
+    /* roberto */
 
 }
