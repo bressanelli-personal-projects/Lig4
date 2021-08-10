@@ -18,10 +18,6 @@ html,body,div,header,section,h1,h2,h3,p,img,button{
     box-sizing: border-box;
 }
 
-html {
-    height: 100%;
-}
-
 body {
     height: 100%;
     background-image: url(../img/background.png); 
@@ -38,7 +34,6 @@ header{
 
 #container{
     width: 305px;
-    height: 282px;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -57,16 +52,9 @@ header{
     box-shadow: inset 0px 30px 5px 0px var(--first-shadow-color), 0 0 1.5em var(--color-gold);
 }
 
-
-
 .coluna:last-child{
     border-right: 4px solid var(--color-black);
 }
-
-
-
-
-
 
 /* roberto */
 
@@ -109,9 +97,12 @@ header{
 }
 
 #nextContainer {
-    width: 300px;
-    height: 150px;
-    padding: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 350px;
+    padding: 30px;
     border-radius: 8px;
     margin: 20px auto;
     box-shadow: 0px 0px 15px 15px var(--next-playerbox-shadow-color);
@@ -120,35 +111,26 @@ header{
 p#proximo {
     font-size: 25px;
     font-weight: 700; 
-    margin-top: 40px;
-    /* padding: 30px; */
-    display: inline-block;
 }
 
 div#nextPlayer {
+    margin-left: 10px;
     width: 80px;
-    height: 80px; 
-    float: right;      
+    height: 80px;
 }
 
 div.flagUsa {
-    background-image: url(/img/logoUSA.png);
-    background-size: 80px;    ;
+    background-image: url(../img/logoUSA.png);
+    background-size: 80px;
 }
 
 div.flagUrss {
-    background-image: url(/img/logoURSS.png);
+    background-image: url(../img/logoURSS.png);
     background-size: 80px;
     border-radius: 100%;
 }
 
-
-
-
 /* roberto */
-    
-
-
 
 @media screen and (min-width: 769px){
     header{
@@ -156,21 +138,23 @@ div.flagUrss {
     }
 
     #container{
-        width: 660px;
-        height: 608px;
+        width: 662px;
+        display: flex;
+        justify-content: center;
     }
 
     .coluna{
-        width: 96px;
-        height: 608px;
+        align-items: center;
+        width: 70px;
+        height: 400px;
         box-shadow: inset 0px 40px 5px 0px var(--first-shadow-color), 0 0 1.5em var(--color-gold);
     }
 
     /* roberto */
 
     .checker {
-        width: 90px;
-        height: 90px;
+        width: 55px;
+        height: 55px;
         border: 2px solid #d8cab3;
         border-radius: 100%;
         box-shadow: inset 0px 0px 15px 5px #fff;       
@@ -218,5 +202,4 @@ div.flagUrss {
     }
 
     /* roberto */
-
 }

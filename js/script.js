@@ -207,16 +207,6 @@ const gamePlay = (e) => {
 
 
 
-const gamePlay = (e) => {
-    
-    console.log(e.target.id)
-    let destino = document.getElementById(e.target.id);
-    makeCheckers();
-    destino.appendChild(makeCheckers());
-
-    //console.log(checker)
-    return checker;
-}
 
 
 const nextGamer = (player) => {
