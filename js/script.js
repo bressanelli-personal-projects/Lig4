@@ -15,32 +15,32 @@ function compareLines(table, posX, posY){
     console.log(posX)
     console.log(posY)
 
-    let horizontal = ""
     let vertical = ""
+    let horizontal = ""
     let diagonal_x = ""
     let diagonal_y = ""
     let x = 0
     let y = 0
     
-    //Trata horizontal
-    horizontal = table[posX].join("")
-    if(horizontal.includes("UUUU")){
-        return [true, 'horizontal', 'U']
-    }
-    if(horizontal.includes("EEEE")){
-        return [true, 'horizontal', 'E']
-    }
-
-
     //Trata vertical
-    for(let i = 0; i < 7; i++){
-        vertical += table[i][posY]
-    }
+    vertical = table[posX].join("")
     if(vertical.includes("UUUU")){
         return [true, 'vertical', 'U']
     }
     if(vertical.includes("EEEE")){
         return [true, 'vertical', 'E']
+    }
+
+
+    //Trata horizontal
+    for(let i = 0; i < 7; i++){
+        horizontal += table[i][posY]
+    }
+    if(horizontal.includes("UUUU")){
+        return [true, 'horizontal', 'U']
+    }
+    if(horizontal.includes("EEEE")){
+        return [true, 'horizontal', 'E']
     }
 
 
@@ -141,10 +141,11 @@ let startDropDesktop = {
 }
  
 
-
+let flag = "E"
 const makeCheckers = (e) => {
-    
-    const destino = document.getElementById(e.target.id);    
+
+    const destino = document.getElementById(e.target.id);
+    //console.log(e.target.id)
     const checker = document.createElement('div');    
     checker.classList.add('checker') 
     
@@ -169,6 +170,7 @@ const makeCheckers = (e) => {
         }        
         
     }
+
     nextGamer(actualPlayer); 
     }    
     
@@ -183,6 +185,9 @@ const gamePlay = (e) => {
     makeCheckers();
     destino.appendChild(makeCheckers());
 
+    }
+
+
     // atualiza tabuleiro
     table[e.target.id[6]][destino.childElementCount-1] = flag
 
@@ -193,12 +198,16 @@ const gamePlay = (e) => {
     }
 
     // condição verifica ganhador
-    let verifyedLines = compareLines(table, e.target.id[6], destino.childElementCount-1);
+    let idColuna = e.target.id
+    let verifyedLines = compareLines(table, parseInt(idColuna[6]), destino.childElementCount-1); 
     if(verifyedLines[0] === true){
-        
+        console.log(verifyedLines[1] + " : " +  verifyedLines[2])
     }
 
+    //console.log(checker)
+    return checker;
 }
+
 
 const nextGamer = (player) => {
     const next = document.getElementById('nextPlayer');
