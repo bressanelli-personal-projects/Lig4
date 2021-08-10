@@ -105,7 +105,20 @@ criarTabuleiro();
 
 /* roberto */
 
-let actualPlayer = true;
+let actualPlayer;
+
+const firstPlayer = () => {
+    if(Math.floor(Math.random() * 2 + 1)-1 === 0){
+    actualPlayer = true;
+} else {
+    actualPlayer = false;
+}
+}
+
+firstPlayer();
+
+
+
 
 let startDropMobile = {
     '0': -250,
@@ -157,7 +170,23 @@ const makeCheckers = (e) => {
         }        
         
     }
+
+    nextGamer(actualPlayer); 
+    }    
+    
+}
+
+
+let flag = "E"
+const gamePlay = (e) => {
+    
+    console.log(e.target.id)
+    let destino = document.getElementById(e.target.id);
+    makeCheckers();
+    destino.appendChild(makeCheckers());
+
     }
+
 
     // atualiza tabuleiro
     table[e.target.id[6]][destino.childElementCount-1] = flag
