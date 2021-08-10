@@ -12,6 +12,8 @@ let empate = 0;
 //variaveis globais
 //Kelvin
 function compareLines(table, posX, posY){
+    console.log(posX)
+    console.log(posY)
 
     let horizontal = ""
     let vertical = ""
@@ -94,6 +96,7 @@ const criarTabuleiro = () => {
         const coluna = document.createElement('div');
         coluna.classList.add('coluna');
         coluna.id = `${'coluna'}${i}`;
+
         boxJogo.appendChild(coluna);
     }
 }
@@ -113,22 +116,28 @@ const makeCheckers = () => {
     return checker;
 }
 
-
+let flag = "E"
 const gamePlay = (e) => {
     
     console.log(e.target.id)
-    const destino = document.getElementById(e.target.id);
+    let destino = document.getElementById(e.target.id);
     makeCheckers();
     destino.appendChild(makeCheckers());
 
-    
-    //* função verifica ganhador
-    const position = e.target.id
-    const verifyedLines = compareLines(table, position, destino.childElementCount-1);
+    // atualiza tabuleiro
+    table[e.target.id[6]][destino.childElementCount-1] = flag
+
+    if(flag === "E"){
+        flag = "U"
+    }else{
+        flag = "E"
+    }
+
+    // condição verifica ganhador
+    let verifyedLines = compareLines(table, e.target.id[6], destino.childElementCount-1);
     if(verifyedLines[0] === true){
         
     }
-    //* função verifica ganhador
     
 }
 
