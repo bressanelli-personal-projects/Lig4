@@ -1,11 +1,13 @@
 //variaveis globais
-let box = [[' ', ' ', ' ', 'U', ' ', ' ']
-          ,[' ', ' ', 'U', ' ', ' ', 'U']
-          ,[' ', 'U', ' ', ' ', 'U', ' ']
-          ,['U', ' ', ' ', 'U', ' ', ' ']
-          ,[' ', ' ', 'U', ' ', ' ', ' ']
-          ,[' ', 'U', ' ', ' ', ' ', ' ']
-          ,['U', ' ', ' ', ' ', ' ', ' ']];
+let table = [[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']];
+
+let empate = 0;
 
 //variaveis globais
 //Kelvin
@@ -64,12 +66,12 @@ function compareLines(table, posX, posY){
     for(let i = 0; i <= 8; i++){
         if(x >= 0 && y >= 0 && x<6 && y<7){
             diagonal_y += table[x][y]
-            
+
         }
         x--
         y++
     }
-    console.log(diagonal_y)
+
     if(diagonal_y.includes("UUUU")){
         return [true, 'diagonal_y', 'U']
     }
@@ -122,6 +124,15 @@ const gamePlay = (e) => {
     const destino = document.getElementById(e.target.id);
     makeCheckers();
     destino.appendChild(makeCheckers());
+
+    
+    //* função verifica ganhador
+    const position = e.target.id
+    const verifyedLines = compareLines(table, position, destino.childElementCount-1);
+    if(verifyedLines[0] === true){
+        
+    }
+    //* função verifica ganhador
     
 }
 
