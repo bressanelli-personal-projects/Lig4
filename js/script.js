@@ -140,8 +140,6 @@ let startDropDesktop = {
     '6': 5
 }
  
-
-let flag = "E"
 const makeCheckers = (e) => {
 
     const destino = document.getElementById(e.target.id);

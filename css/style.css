@@ -163,7 +163,7 @@ div.flagUrss {
     .coluna{
         width: 96px;
         height: 638px;
-        box-shadow: inset 0px 40px 5px 0px var(--color-red), 0 0 1.5em var(--color-gold);
+        box-shadow: inset 0px 40px 5px 0px var(--first-shadow-color), 0 0 1.5em var(--color-gold);
     }
 
     /* roberto */
