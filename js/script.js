@@ -1,11 +1,11 @@
 //variaveis globais
-let box = [[' ', ' ', ' ', ' ', ' ', ' ']
-          ,[' ', ' ', ' ', ' ', ' ', ' ']
-          ,[' ', ' ', ' ', ' ', ' ', ' ']
-          ,[' ', ' ', ' ', ' ', ' ', ' ']
-          ,[' ', ' ', ' ', ' ', ' ', ' ']
-          ,[' ', ' ', ' ', ' ', ' ', ' ']
-          ,[' ', ' ', ' ', ' ', ' ', ' ']];
+let box = [[' ', ' ', ' ', 'U', ' ', ' ']
+          ,[' ', ' ', 'U', ' ', ' ', 'U']
+          ,[' ', 'U', ' ', ' ', 'U', ' ']
+          ,['U', ' ', ' ', 'U', ' ', ' ']
+          ,[' ', ' ', 'U', ' ', ' ', ' ']
+          ,[' ', 'U', ' ', ' ', ' ', ' ']
+          ,['U', ' ', ' ', ' ', ' ', ' ']];
 
 //variaveis globais
 //Kelvin
@@ -14,10 +14,10 @@ function compareLines(table, posX, posY){
     let horizontal = ""
     let vertical = ""
     let diagonal_x = ""
+    let diagonal_y = ""
     let x = 0
     let y = 0
-
-
+    
     //Trata horizontal
     horizontal = table[posX].join("")
     if(horizontal.includes("UUUU")){
@@ -40,15 +40,41 @@ function compareLines(table, posX, posY){
     }
 
 
-    //cria string diagonal_x
-    
-    
-    console.log(diagonal_x)
+    //trata diagonal_x
+    x = posX+3
+    y = posY+3
+    for(let i = 0; i <= 8; i++){
+        if(x >= 0 && y >= 0 && x<6 && y<7){
+            diagonal_x += table[x][y]
+            
+        }
+        x--
+        y--
+    }
     if(diagonal_x.includes("UUUU")){
         return [true, 'diagonal_x', 'U']
     }
     if(diagonal_x.includes("EEEE")){
         return [true, 'diagonal_x', 'E']
+    }
+
+    //trata diagonal_y
+    x = posX+3
+    y = posY-3
+    for(let i = 0; i <= 8; i++){
+        if(x >= 0 && y >= 0 && x<6 && y<7){
+            diagonal_y += table[x][y]
+            
+        }
+        x--
+        y++
+    }
+    console.log(diagonal_y)
+    if(diagonal_y.includes("UUUU")){
+        return [true, 'diagonal_y', 'U']
+    }
+    if(diagonal_y.includes("EEEE")){
+        return [true, 'diagonal_y', 'E']
     }
 
     //cria string diagonal_y
