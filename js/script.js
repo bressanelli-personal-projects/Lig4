@@ -102,27 +102,62 @@ criarTabuleiro();
 
 let actualPlayer = true;
 
-const makeCheckers = () => {
-    const checker = document.createElement('div');
+let startDrop = {
+    '0': -500,
+    '1': -400,
+    '2': -310,
+    '3': -220,
+    '4': -130,
+    '5': -40,
+    '6': 5
+}
+
+const makeCheckers = (e) => {
+
+    const destino = document.getElementById(e.target.id);
+    console.log(e.target.id)
+    const checker = document.createElement('div');    
+    checker.classList.add('checker')   
+
+    if(destino !== null){
+        let variavel = destino.childElementCount;
+        if(destino.childElementCount < 6) {
+            if(actualPlayer){
+            
+            checker.classList.remove('urss')
+            checker.classList.add('usa');                 
+            // checker.style.setProperty('--positionUsa', `${startDrop[variavel]}px`)                      
+            actualPlayer = false;
+            destino.appendChild(checker);
+        } else {
+            checker.classList.remove('usa')
+            checker.classList.add('urss');
+            // checker.style.setProperty('--positionUrss', `${startDrop[variavel]}px`)                
+            actualPlayer = true;
+            destino.appendChild(checker);
+        } 
+        
     
-    checker.classList.add('checker');
-    checker.classList.add('checkerUSA');
-    
+    }
+    } 
+    console.log(checker)
     return checker;
 }
 
 
-const gamePlay = (e) => {
+// const gamePlay = (e) => {
     
-    console.log(e.target.id)
-    const destino = document.getElementById(e.target.id);
-    makeCheckers();
-    destino.appendChild(makeCheckers());
+//     console.log(boxJogo.lastElementChild.id)
+//     const destino = document.getElementById(e.target.id);    
+//     destino.appendChild(makeCheckers());    
     
-}
+    
+// }
 
 
-boxJogo.addEventListener('click', gamePlay);
+
+
+boxJogo.addEventListener('click', makeCheckers);
 
 
 
