@@ -101,7 +101,7 @@ header{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 350px;
+    width: 300px;
     padding: 30px;
     border-radius: 8px;
     margin: 20px auto;
@@ -161,7 +161,8 @@ div.flagUrss {
     }
 
     .usa , .urss{
-        background-size: 90px;
+        background-size: 55px;
+        background-position: center;
     }
 
     @keyframes dropDownUsa {
@@ -183,9 +184,10 @@ div.flagUrss {
     @media screen and (min-width: 1024px){
 
         section {
-            max-width: 1024px;
+            max-width: 800px;
             margin: 0 auto;
             display: flex;
+            justify-content: center;
             flex-direction: row;
             align-items: center;
         }
@@ -193,12 +195,16 @@ div.flagUrss {
         #nextContainer {
             display: flex;
             flex-direction: column;
-            justify-content: space-evenly;
+            justify-content: center;
             align-items: center;
             width: 150px;
-            height: 600px;
+            height: 400px;
             padding: 35px;            
-        } 
+        }
+        div#nextPlayer {
+            margin-top: 15px;
+            margin-left: 0px;
+        }
     }
 
     /* roberto */
