@@ -45,7 +45,59 @@ header{
     border-right: 4px solid var(--color-black);
 }
 
-
+.modalUSA{
+    width: 280px;
+    height: 180px;
+    top: 50%;
+    left: 50%;
+    position:absolute;
+    border-radius: 10px;
+    transform: translate(-50%, -50%);
+    background-image: url(/img/usa_win.gif);
+    box-shadow: inset 1px 1px 1px 1em black, 1px 1px 2em red;
+ }
+  
+ .modal__close{
+    margin: 20px;
+    float: right;
+ }
+  
+ .modal__text{
+    width: 242px;
+    font-size: 15px;
+    color: white;
+    left: 20px;
+    top: 78px;
+    position: relative;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Chakra Petch', sans-serif;
+    background-color: rgba(0, 0, 0, 0.527);
+ }
+  
+ @keyframes neon {
+    from {
+        filter: drop-shadow(0 0 0 yellow)
+    }
+    to {
+        filter: drop-shadow(0 0 50px yellow);
+    }
+ }
+  
+ .modal__text h2{
+    padding-left: 30px;
+    animation: neon 1s alternate infinite ease-in-out;
+ }
+  
+ #btn__close{
+    display: none;
+ }
+  
+ #icone{
+    font-size: 1rem;
+    color: white;
+ }
+ 
 
 
 
@@ -101,5 +153,21 @@ body {
         width: 96px;
         height: 548px;
     }
+
+    .modalUSA{
+        width: 500px;
+        height: 278px;
+    }
+  
+    .modal__text{
+        width: 463px;
+        top: 110px;
+        font-size: 35px;
+    }
+  
+    #icone{
+        font-size: 2rem;
+    }
+ 
 
 }
