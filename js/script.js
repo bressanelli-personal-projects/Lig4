@@ -185,7 +185,7 @@ const gamePlay = (e) => {
     makeCheckers();
     destino.appendChild(makeCheckers());
 
-    }
+    
 
 
     // atualiza tabuleiro
