@@ -168,23 +168,6 @@ const makeCheckers = (e) => {
         
     }
 
-    nextGamer(actualPlayer); 
-    }    
-    
-}
-
-
-let flag = "E"
-const gamePlay = (e) => {
-    
-    console.log(e.target.id)
-    let destino = document.getElementById(e.target.id);
-    makeCheckers();
-    destino.appendChild(makeCheckers());
-
-    
-
-
     // atualiza tabuleiro
     table[e.target.id[6]][destino.childElementCount-1] = flag
 
@@ -201,12 +184,24 @@ const gamePlay = (e) => {
         console.log(verifyedLines[1] + " : " +  verifyedLines[2])
     }
     //verifica empate
- 
+
+    nextGamer(actualPlayer); 
+    }    
     
 }
 
 
 
+const gamePlay = (e) => {
+    
+    console.log(e.target.id)
+    let destino = document.getElementById(e.target.id);
+    makeCheckers();
+    destino.appendChild(makeCheckers());
+
+    //console.log(checker)
+    return checker;
+}
 
 
 const nextGamer = (player) => {
