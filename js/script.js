@@ -168,7 +168,6 @@ const makeCheckers = (e) => {
         
     }
 
-<<<<<<< HEAD
     nextGamer(actualPlayer); 
     }    
     
@@ -186,8 +185,6 @@ const gamePlay = (e) => {
     
 
 
-=======
->>>>>>> b3db8cc1fb20fe802ed383c92a378b1e1ce47bd4
     // atualiza tabuleiro
     table[e.target.id[6]][destino.childElementCount-1] = flag
 
@@ -204,9 +201,7 @@ const gamePlay = (e) => {
         console.log(verifyedLines[1] + " : " +  verifyedLines[2])
     }
     //verifica empate
-
-    nextGamer(actualPlayer); 
-    }    
+ 
     
 }
 
