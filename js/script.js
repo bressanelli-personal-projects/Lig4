@@ -65,10 +65,18 @@ criarTabuleiro();
 let actualPlayer = true;
 
 const makeCheckers = () => {
-    const checker = document.createElement('div');
-    
-    checker.classList.add('checker');
-    checker.classList.add('checkerUSA');
+    const checker = document.createElement('div');    
+    checker.classList.add('checker');    
+
+    if(actualPlayer) {
+        checker.classList.remove('checkerURSS')
+        checker.classList.add('checkerUSA')
+        actualPlayer = false;
+    } else {
+        checker.classList.remove('checkerUSA');
+        checker.classList.add('checkerURSS')
+        actualPlayer = true;
+    }
     
     return checker;
 }
@@ -76,12 +84,14 @@ const makeCheckers = () => {
 
 const gamePlay = (e) => {
     
-    console.log(e.target.id)
-    const destino = document.getElementById(e.target.id);
-    makeCheckers();
-    destino.appendChild(makeCheckers());
+    console.log(boxJogo.lastElementChild.id)
+    const destino = document.getElementById(e.target.id);    
+    destino.appendChild(makeCheckers());    
+    
     
 }
+
+
 
 
 boxJogo.addEventListener('click', gamePlay);
