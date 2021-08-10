@@ -1,15 +1,21 @@
-let box = [['E', ' ', ' ', ' ', ' ', ' ']
-          ,[' ', 'E', 'U', 'U', 'U', 'U']
-          ,[' ', ' ', 'E', ' ', ' ', ' ']
-          ,['E', 'E', 'E', 'E', 'E', 'E']
-          ,[' ', ' ', ' ', 'E', 'E', ' ']
-          ,[' ', ' ', ' ', 'E', ' ', 'E']
-          ,[' ', ' ', ' ', 'E', ' ', ' ']];
+//variaveis globais
+let box = [[' ', ' ', ' ', ' ', ' ', ' ']
+          ,[' ', ' ', ' ', ' ', ' ', ' ']
+          ,[' ', ' ', ' ', ' ', ' ', ' ']
+          ,[' ', ' ', ' ', ' ', ' ', ' ']
+          ,[' ', ' ', ' ', ' ', ' ', ' ']
+          ,[' ', ' ', ' ', ' ', ' ', ' ']
+          ,[' ', ' ', ' ', ' ', ' ', ' ']];
 
+//variaveis globais
+//Kelvin
 function compareLines(table, posX, posY){
 
     let horizontal = ""
     let vertical = ""
+    let diagonal_x = ""
+    let x = 0
+    let y = 0
 
 
     //Trata horizontal
@@ -35,10 +41,20 @@ function compareLines(table, posX, posY){
 
 
     //cria string diagonal_x
+    
+    
+    console.log(diagonal_x)
+    if(diagonal_x.includes("UUUU")){
+        return [true, 'diagonal_x', 'U']
+    }
+    if(diagonal_x.includes("EEEE")){
+        return [true, 'diagonal_x', 'E']
+    }
 
     //cria string diagonal_y
     return false
 }
+//Kelvin
 //Manoela
 const boxJogo = document.getElementById('container');
 
