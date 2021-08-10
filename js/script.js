@@ -117,10 +117,11 @@ let startDrop = {
     '6': 5
 }
 
+let flag = "E"
 const makeCheckers = (e) => {
 
     const destino = document.getElementById(e.target.id);
-    console.log(e.target.id)
+    //console.log(e.target.id)
     const checker = document.createElement('div');    
     checker.classList.add('checker')   
 
@@ -144,18 +145,7 @@ const makeCheckers = (e) => {
         
     
     }
-    } 
-    console.log(checker)
-    return checker;
-}
-
-let flag = "E"
-const gamePlay = (e) => {
-    
-    console.log(e.target.id)
-    let destino = document.getElementById(e.target.id);
-    makeCheckers();
-    destino.appendChild(makeCheckers());
+    }
 
     // atualiza tabuleiro
     table[e.target.id[6]][destino.childElementCount-1] = flag
@@ -167,10 +157,23 @@ const gamePlay = (e) => {
     }
 
     // condição verifica ganhador
-    let verifyedLines = compareLines(table, e.target.id[6], destino.childElementCount-1);
+    let idColuna = e.target.id
+    let verifyedLines = compareLines(table, parseInt(idColuna[6]), destino.childElementCount-1); 
     if(verifyedLines[0] === true){
-        
+        console.log(verifyedLines[1] + " : " +  verifyedLines[2])
     }
+
+    //console.log(checker)
+    return checker;
+}
+
+const gamePlay = (e) => {
+    
+    //console.log(e.target.id)
+    let destino = document.getElementById(e.target.id);
+    makeCheckers();
+    destino.appendChild(makeCheckers());
+    
 }
 
 // const gamePlay = (e) => {
@@ -178,8 +181,7 @@ const gamePlay = (e) => {
 //     console.log(boxJogo.lastElementChild.id)
 //     const destino = document.getElementById(e.target.id);    
 //     destino.appendChild(makeCheckers());    
-    
-    
+      
 // }
 
 
