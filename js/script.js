@@ -7,7 +7,7 @@ let table = [[' ', ' ', ' ', ' ', ' ', ' ']
             ,[' ', ' ', ' ', ' ', ' ', ' ']
             ,[' ', ' ', ' ', ' ', ' ', ' ']];
 
-let empate = 0;
+let flag = "E"
 
 //variaveis globais
 //Kelvin
@@ -110,15 +110,14 @@ let actualPlayer;
 const firstPlayer = () => {
     if(Math.floor(Math.random() * 2 + 1)-1 === 0){
     actualPlayer = true;
+    flag = "E"
 } else {
     actualPlayer = false;
+    flag = "U"
 }
 }
 
 firstPlayer();
-
-
-
 
 let startDropMobile = {
     '0': -250,
@@ -169,6 +168,7 @@ const makeCheckers = (e) => {
         
     }
 
+<<<<<<< HEAD
     nextGamer(actualPlayer); 
     }    
     
@@ -186,6 +186,8 @@ const gamePlay = (e) => {
     
 
 
+=======
+>>>>>>> b3db8cc1fb20fe802ed383c92a378b1e1ce47bd4
     // atualiza tabuleiro
     table[e.target.id[6]][destino.childElementCount-1] = flag
 
@@ -201,6 +203,21 @@ const gamePlay = (e) => {
     if(verifyedLines[0] === true){
         console.log(verifyedLines[1] + " : " +  verifyedLines[2])
     }
+    //verifica empate
+
+    nextGamer(actualPlayer); 
+    }    
+    
+}
+
+
+
+const gamePlay = (e) => {
+    
+    console.log(e.target.id)
+    let destino = document.getElementById(e.target.id);
+    makeCheckers();
+    destino.appendChild(makeCheckers());
 
     //console.log(checker)
     return checker;
