@@ -1,15 +1,19 @@
 //variaveis globais
-let box = [[' ', ' ', ' ', 'U', ' ', ' ']
-          ,[' ', ' ', 'U', ' ', ' ', 'U']
-          ,[' ', 'U', ' ', ' ', 'U', ' ']
-          ,['U', ' ', ' ', 'U', ' ', ' ']
-          ,[' ', ' ', 'U', ' ', ' ', ' ']
-          ,[' ', 'U', ' ', ' ', ' ', ' ']
-          ,['U', ' ', ' ', ' ', ' ', ' ']];
+let table = [[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']];
+
+let empate = 0;
 
 //variaveis globais
 //Kelvin
 function compareLines(table, posX, posY){
+    console.log(posX)
+    console.log(posY)
 
     let horizontal = ""
     let vertical = ""
@@ -64,12 +68,12 @@ function compareLines(table, posX, posY){
     for(let i = 0; i <= 8; i++){
         if(x >= 0 && y >= 0 && x<6 && y<7){
             diagonal_y += table[x][y]
-            
+
         }
         x--
         y++
     }
-    console.log(diagonal_y)
+
     if(diagonal_y.includes("UUUU")){
         return [true, 'diagonal_y', 'U']
     }
@@ -92,6 +96,7 @@ const criarTabuleiro = () => {
         const coluna = document.createElement('div');
         coluna.classList.add('coluna');
         coluna.id = `${'coluna'}${i}`;
+
         boxJogo.appendChild(coluna);
     }
 }
@@ -154,6 +159,31 @@ const makeCheckers = (e) => {
     nextGamer(actualPlayer); 
     }    
     
+
+
+
+let flag = "E"
+const gamePlay = (e) => {
+    
+    console.log(e.target.id)
+    let destino = document.getElementById(e.target.id);
+    makeCheckers();
+    destino.appendChild(makeCheckers());
+
+    // atualiza tabuleiro
+    table[e.target.id[6]][destino.childElementCount-1] = flag
+
+    if(flag === "E"){
+        flag = "U"
+    }else{
+        flag = "E"
+    }
+
+    // condição verifica ganhador
+    let verifyedLines = compareLines(table, e.target.id[6], destino.childElementCount-1);
+    if(verifyedLines[0] === true){
+        
+    }
 
 }
 
