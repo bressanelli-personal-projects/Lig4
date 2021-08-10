@@ -1,11 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500;700&display=swap');
 
+:root{
+    --color-white: #fff;
+    --color-black: #000;
+    --color-red: #f00;
+    --color-gold: #ffd700;
+}
+
 html,body,div,header,section,h1,h2,h3,p,img,button{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+/*Manoela*/
 header{
     padding: 25px;
     text-align: center;
@@ -19,29 +27,27 @@ header{
     margin: 0 auto;
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
 .coluna{
+    width: 45px;
+    height: 242px;
     display: flex;
     flex-direction: column-reverse;
-    border: 4px solid black;
+    border-radius: 6px;
+    border: 4px solid var(--color-black);
     border-right: none;
+    box-shadow: inset 0 0 1em var(--color-red), 0 0 1.5em var(--color-gold);
 }
 
 .coluna:last-child{
-    border-right: 4px solid black;
+    border-right: 4px solid var(--color-black);
 }
 
-.celula{
-    width: 39px;
-    height: 39px;
-    margin: 0 auto;    
-    border-bottom: 4px solid black;
-}
 
-.celula:first-child{
-    border-bottom: none;
-}
+
+
 
 
 /* roberto */
@@ -72,7 +78,7 @@ html {
 
 body {
     height: 100%;
-    background-image: url(../img/background.png);    
+    background-image: url(../img/background.png); 
 }
 
 
@@ -91,8 +97,9 @@ body {
         height: 548px;
     }
 
-    .celula{
-        width: 90px;
-        height: 90px;
+    .coluna{
+        width: 96px;
+        height: 548px;
     }
+
 }
