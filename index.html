@@ -14,11 +14,18 @@
         <h1>JOGO LIG-4</h1>
     </header>
 
-    <div id="container">
-        <div class="modalUSA ">
+    <section class="placar">
+        <h3>USA: 0</h3>
+        <h3>URSS: 0</h3>
+    </section>
+
+    <section id="container">
+
+        <div class="modalUSA hidden">
+            <img class="img__modal" src="img/usa_win.gif">
             <div class="modal__close">
-                <input type="button" id="btn__close">
-                <label id="icone" for="btn__close">
+                <input type="button" id="btn__one">
+                <label class="icone" for="btn__one">
                     <i class="fas fa-times-circle"></i>
                 </label>
             </div>
@@ -27,8 +34,42 @@
                 <h2>USA Venceu!!!</h2>  
             </div>
         </div>
-    </div>
+
+        <div class="modalURSS hidden">
+            <img class="img__modal" src="img/urss_win.gif">
+            <div class="modal__close">
+                <input type="button" id="btn__two">
+                <label class="icone" for="btn__two">
+                    <i class="fas fa-times-circle"></i>
+                </label>
+            </div>
+   
+            <div class="modal__text">
+                <h2>URSS Venceu!!!</h2>  
+            </div>
+        </div>
+
+        <div class="modal__empate hidden">
+            <img class="img__modal" src="img/empate2.gif">
+            <div class="modal__close">
+                <input type="button" id="btn__three">
+                <label class="icone" for="btn__three">
+                    <i class="fas fa-times-circle"></i>
+                </label>
+            </div>
+   
+            <div class="modal__text">
+                <h2>EMPATE!!!</h2>  
+            </div>
+        </div>
+
+    </section>
     
+    <section class="btn">
+        <button type="reset" class="reset">RESET</button>
+        <button type="reset" class="reset">RESET PLACAR</button>
+    </section>
+
     <script src="js/script.js"></script>
 </body>
 </html>

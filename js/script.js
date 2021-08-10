@@ -101,3 +101,34 @@ boxJogo.addEventListener('click', gamePlay);
 
 
 /* roberto */
+
+
+
+//Manoela
+const modalUSA = document.querySelector(".modalUSA");
+const modalURSS = document.querySelector(".modalURSS");
+const modalEmpate = document.querySelector(".modal__empate");
+
+const buttonClose = document.querySelector(".modal__close");
+
+buttonClose.addEventListener('click', function(){
+    modalUSA.classList.add('hidden')
+    modalUSA.classList.add('hidden')
+    modalEmpate.classList.add('hidden')
+});
+
+
+const condicaoVitoria = (value) => {
+
+    if(value === 'E'){
+        modalUSA.classList.remove('hidden');
+    }
+    
+    if(value === 'U'){
+        modalURSS.classList.remove('hidden');
+    }
+    
+    //FALTA FAZER
+    modalEmpate.classList.remove('hidden');
+ 
+};
