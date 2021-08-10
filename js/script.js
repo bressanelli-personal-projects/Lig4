@@ -140,8 +140,6 @@ let startDropDesktop = {
     '6': 5
 }
  
-
-let flag = "E"
 const makeCheckers = (e) => {
 
     const destino = document.getElementById(e.target.id);
@@ -184,9 +182,6 @@ const gamePlay = (e) => {
     let destino = document.getElementById(e.target.id);
     makeCheckers();
     destino.appendChild(makeCheckers());
-
-    }
-
 
     // atualiza tabuleiro
     table[e.target.id[6]][destino.childElementCount-1] = flag
