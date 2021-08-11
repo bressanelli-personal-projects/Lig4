@@ -140,7 +140,7 @@ let startDropDesktop = {
 }
  
 const makeCheckers = (e) => {
-
+    audioClick.play();
     const destino = document.getElementById(e.target.id);
     //console.log(e.target.id)
     const checker = document.createElement('div');    
@@ -234,6 +234,7 @@ const condicaoVitoria = (value) => {
     setTimeout(() => {
         if(value === 'E'){
             modalUSA.classList.remove('hidden');
+            audioWin.play();
         }
         
         if(value === 'U'){
@@ -250,7 +251,6 @@ const condicaoVitoria = (value) => {
 const buttonClose = document.getElementById('container');
 
 const modalClose = (event) => {
-    
     const idButton = event.target.id;
     
     if(idButton === 'btn__one'){
@@ -263,8 +263,7 @@ const modalClose = (event) => {
     
     if(idButton === 'btn__three'){
        modalEmpate.classList.add('hidden');
-    }
-    
+    }   
 };
 
 buttonClose.addEventListener('click', modalClose);
@@ -314,4 +313,10 @@ resetPlacar.addEventListener("click", function () {
     document.querySelector('#jogador__two').innerText = `${'URSS'}: ${0}`
 });
 
+const audioClick = new Audio("sound/click.mp3");
+const audioWin = new Audio("sound/jingle-win-01.mp3");
+
+/*function firstClick() {
+    
+}*/
 //MANOELA
