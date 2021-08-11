@@ -12,8 +12,6 @@ let flag;
 //variaveis globais
 //Kelvin
 function compareLines(table, posX, posY){
-    console.log(posX)
-    console.log(posY)
 
     let vertical = ""
     let horizontal = ""
@@ -46,15 +44,16 @@ function compareLines(table, posX, posY){
 
     //trata diagonal_x
     x = posX+3
-    y = posY+3
-    for(let i = 0; i <= 8; i++){
-        if(x >= 0 && y >= 0 && x<6 && y<7){
+    y = posY-3
+    for(let i = 0; i < 8; i++){
+        if(x >= 0 && y >= 0 && x<7 && y<6){
             diagonal_x += table[x][y]
             
         }
         x--
-        y--
+        y++
     }
+
     if(diagonal_x.includes("UUUU")){
         return [true, 'diagonal_x', 'U']
     }
@@ -63,17 +62,16 @@ function compareLines(table, posX, posY){
     }
 
     //trata diagonal_y
-    x = posX+3
+    x = posX-3
     y = posY-3
     for(let i = 0; i <= 8; i++){
-        if(x >= 0 && y >= 0 && x<6 && y<7){
+        if(x >= 0 && y >= 0 && x<7 && y<6){
             diagonal_y += table[x][y]
 
         }
-        x--
+        x++
         y++
     }
-
     if(diagonal_y.includes("UUUU")){
         return [true, 'diagonal_y', 'U']
     }
@@ -169,19 +167,19 @@ const makeCheckers = (e) => {
     }
 
     // atualiza tabuleiro
-    table[e.target.id[6]][destino.childElementCount-1] = flag
-
-    if(flag === "E"){
-        flag = "U"
-    }else{
-        flag = "E"
+    if(table[e.target.id[6]][5] === " "){
+        table[e.target.id[6]][destino.childElementCount-1] = flag
+        if(flag === "E"){
+            flag = "U"
+        }else{
+            flag = "E"
+        }
     }
 
     // condição verifica ganhador
     let idColuna = e.target.id
     let verifyedLines = compareLines(table, parseInt(idColuna[6]), destino.childElementCount-1); 
     if(verifyedLines[0] === true){
-        console.log(verifyedLines[2])
         placar(verifyedLines[2]);
         condicaoVitoria(verifyedLines[2]);
         return verifyedLines
