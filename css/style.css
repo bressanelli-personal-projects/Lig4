@@ -33,6 +33,38 @@ header{
     font-family: 'Chakra Petch', sans-serif;
 }
 
+.nav__container{
+    display: flex;
+    align-items: center;
+}
+
+#btn__menu{
+    display: none;
+}
+
+#icone{
+    font-size: 2rem;
+}
+
+.nav__menu{
+    display: none;
+}
+
+#instructionLink{
+    font-size: 17px;
+    font-weight: 600;
+    padding: 0px 8px;
+    color: var(--color-black);
+}
+
+#instructionLink:hover{
+    cursor: pointer;
+}
+
+#btn__menu:checked~.nav__menu{
+    display: block;
+}
+
 #container, #boxJogo{
     width: 305px;
     margin: 0 auto;
@@ -166,12 +198,6 @@ header{
 
 /* roberto */
 
-header a#instructionLink {
-    color: #ec3737;
-    font-variant: small-caps;
-    font-weight: 700;    
-}
-
 .checker {
     width: 38px;
     height: 38px;
@@ -255,7 +281,20 @@ div.flagUrss {
     header{
         font-size: 24px;
     }
-    
+
+    .nav__container{
+        position: absolute;
+    }
+
+    .nav__menu{
+        display: block;
+        margin-bottom: 7px;
+    }
+
+    #btn__menu:checked~.nav__menu{
+        display: none;
+    }
+
     #container, #boxJogo{
         width: 662px;
         display: flex;
@@ -304,13 +343,6 @@ div.flagUrss {
     }
 
     /* roberto */
-
-    header a#instructionLink {
-        color: #ec3737;
-        font-variant: small-caps;
-        font-weight: 700;   
-        float: right;
-    }
 
     .checker {
         width: 55px;

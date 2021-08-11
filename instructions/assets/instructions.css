@@ -11,6 +11,10 @@ header h1#mainTitle {
     background-color: #f0f8ff;    
 }
 
+h2{
+    padding: 15px;
+}
+
 .container {
     padding: 10px;
     text-align: center;
@@ -22,18 +26,24 @@ header h1#mainTitle {
 }
 
 .container figure img {
-    margin: 10px 0;
+    margin-top: 10px;
     width: 300px;
     border: 2px solid #000;
     border-radius: 6px;
 }
 
+.container figure figcaption{
+    margin: 5px;
+    font-size: 15px;
+}
+
 article p {
-    margin: 10px;
+    margin: 15px;
     text-align: justify;
 }
 
 footer#copyright p {
+    padding: 15px;
     text-align: center;
     font-size: 14px;
     background-color: #f0f8ff;
