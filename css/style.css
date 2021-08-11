@@ -259,7 +259,6 @@ div.flagUrss {
         align-items: center;
         width: 70px;
         height: 400px;
-        box-shadow: inset 0px 40px 5px 0px var(--first-shadow-color), 0 0 1.5em var(--color-gold);
     }
 
     .modalUSA, .modalURSS, .modal__empate{
@@ -281,6 +280,7 @@ div.flagUrss {
 
     .placar{
         width: 180px;
+        justify-content: space-around;
     }
   
     .icone{
