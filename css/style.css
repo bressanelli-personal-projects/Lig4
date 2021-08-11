@@ -32,7 +32,7 @@ header{
     font-family: 'Chakra Petch', sans-serif;
 }
 
-#container{
+#container, #boxJogo{
     width: 305px;
     margin: 0 auto;
     display: flex;
@@ -249,7 +249,7 @@ div.flagUrss {
         font-size: 24px;
     }
 
-    #container{
+    #container, #boxJogo{
         width: 662px;
         display: flex;
         justify-content: center;
