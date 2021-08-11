@@ -18,7 +18,7 @@ html,body,div,header,section,h1,h2,h3,p,img,button{
     box-sizing: border-box;
 }
 
-body {
+body{
     height: 100%;
     background-image: url(../img/background.png); 
     background-size: 100%;

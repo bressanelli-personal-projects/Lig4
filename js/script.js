@@ -188,11 +188,12 @@ const makeCheckers = (e) => {
     let empate = 0
     for(let i = 0; i < 7; i++){
         let coluna = document.getElementById(`coluna${i}`)
-        if(coluna.childElementCount === 6){
+        if(coluna.childElementCount > 5){
             empate++
         }
     }
     if(empate === 7){
+        alert("Empate")
         return 'empate'
     }
     
