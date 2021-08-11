@@ -88,7 +88,7 @@ function compareLines(table, posX, posY){
 //Kelvin
 
 //Manoela
-const boxJogo = document.getElementById('container');
+const boxJogo = document.getElementById('boxJogo');
 
 const criarTabuleiro = () => {
 
@@ -204,19 +204,7 @@ const makeCheckers = (e) => {
     }     
 }
 
-
-const gamePlay = (e) => {
-    
-    console.log(e.target.id)
-    let destino = document.getElementById(e.target.id);
-    makeCheckers();
-    destino.appendChild(makeCheckers());
-
-    //console.log(checker)
-    return checker;
-}
-
-const nextGamer = (player) => {
+const nextGamer = () => {
     const next = document.getElementById('nextPlayer');
     
     if(actualPlayer) {
@@ -228,7 +216,6 @@ const nextGamer = (player) => {
         next.classList.add('flagUrss');
     }
 }
-
 nextGamer(actualPlayer); 
 
 boxJogo.addEventListener('click', makeCheckers);
@@ -277,6 +264,7 @@ const modalClose = (event) => {
     if(idButton === 'btn__three'){
        modalEmpate.classList.add('hidden');
     }
+    
 };
 
 buttonClose.addEventListener('click', modalClose);
