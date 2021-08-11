@@ -138,7 +138,7 @@ let startDropDesktop = {
 }
  
 const makeCheckers = (e) => {
- 
+    audioJogada.play();
     const destino = document.getElementById(e.target.id);
     //console.log(e.target.id)
     const checker = document.createElement('div');    
@@ -230,6 +230,7 @@ const modalEmpate = document.querySelector('.modal__empate');
 const condicaoVitoria = (value) => {
     
     setTimeout(() => {
+        audioWin.play();
         if(value === 'E'){
             modalUSA.classList.remove('hidden');
         }
@@ -242,6 +243,7 @@ const condicaoVitoria = (value) => {
             modalEmpate.classList.remove('hidden');
         }
     }, 1500);
+
     boxJogo.removeEventListener('click', makeCheckers);
 };
 
@@ -269,19 +271,22 @@ const placar = (value) => {
     let pointsPlayerOne = document.querySelector('#jogador__one');
     let pointsPlayerTwo = document.querySelector('#jogador__two');
 
-    if(value === 'E'){
-        countOne++
-        pointsPlayerOne.innerText = `${'USA'}: ${countOne}`
-    }
-
-    if(value === 'U'){
-        countTwo++
-        pointsPlayerTwo.innerText = `${'URSS'}: ${countTwo}`
-    }
+    setTimeout(() => {
+        if(value === 'E'){
+            countOne++
+            pointsPlayerOne.innerText = `${'USA'}: ${countOne}`
+        }
+    
+        if(value === 'U'){
+            countTwo++
+            pointsPlayerTwo.innerText = `${'URSS'}: ${countTwo}`
+        }
+    }, 1500); 
 };
 
 const btnResetJogo = document.getElementById("reset__jogo");
 const resetJogo = () => {
+    audioReset.play();
     table = [[' ', ' ', ' ', ' ', ' ', ' ']
             ,[' ', ' ', ' ', ' ', ' ', ' ']
             ,[' ', ' ', ' ', ' ', ' ', ' ']
@@ -303,11 +308,16 @@ btnResetJogo.addEventListener("click", resetJogo);
 
 const btnResetPlacar = document.getElementById("reset__placar");
 const resetPlacar = () => {
+    audioReset.play();
     countOne = 0;
     countTwo = 0;
     document.querySelector('#jogador__one').innerText = `${'USA'}: ${0}`
     document.querySelector('#jogador__two').innerText = `${'URSS'}: ${0}`
 };
 btnResetPlacar.addEventListener("click", resetPlacar);
+
+const audioJogada = new Audio("sound/sound-click.mp3");
+const audioWin = new Audio("sound/sound-win.mp3");
+const audioReset = new Audio("sound/sound-reset.mp3");
 
 //MANOELA
