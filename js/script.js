@@ -12,8 +12,6 @@ let flag;
 //variaveis globais
 //Kelvin
 function compareLines(table, posX, posY){
-    console.log(posX)
-    console.log(posY)
 
     let vertical = ""
     let horizontal = ""
@@ -55,7 +53,6 @@ function compareLines(table, posX, posY){
         x--
         y++
     }
-    console.log(diagonal_x.split(' '))
 
     if(diagonal_x.includes("UUUU")){
         return [true, 'diagonal_x', 'U']
@@ -170,19 +167,19 @@ const makeCheckers = (e) => {
     }
 
     // atualiza tabuleiro
-    table[e.target.id[6]][destino.childElementCount-1] = flag
-
-    if(flag === "E"){
-        flag = "U"
-    }else{
-        flag = "E"
+    if(table[e.target.id[6]][5] === " "){
+        table[e.target.id[6]][destino.childElementCount-1] = flag
+        if(flag === "E"){
+            flag = "U"
+        }else{
+            flag = "E"
+        }
     }
 
     // condição verifica ganhador
     let idColuna = e.target.id
     let verifyedLines = compareLines(table, parseInt(idColuna[6]), destino.childElementCount-1); 
     if(verifyedLines[0] === true){
-        console.log(verifyedLines[2])
         placar(verifyedLines[2]);
         condicaoVitoria(verifyedLines[2]);
         return verifyedLines
