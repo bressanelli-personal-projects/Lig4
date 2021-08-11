@@ -140,7 +140,7 @@ let startDropDesktop = {
 }
  
 const makeCheckers = (e) => {
-    audioClick.play();
+ 
     const destino = document.getElementById(e.target.id);
     //console.log(e.target.id)
     const checker = document.createElement('div');    
@@ -234,7 +234,6 @@ const condicaoVitoria = (value) => {
     setTimeout(() => {
         if(value === 'E'){
             modalUSA.classList.remove('hidden');
-            audioWin.play();
         }
         
         if(value === 'U'){
@@ -248,8 +247,7 @@ const condicaoVitoria = (value) => {
     boxJogo.removeEventListener('click', makeCheckers);
 };
 
-const buttonClose = document.getElementById('container');
-
+const btnModalClose = document.getElementById('container');
 const modalClose = (event) => {
     const idButton = event.target.id;
     
@@ -263,10 +261,9 @@ const modalClose = (event) => {
     
     if(idButton === 'btn__three'){
        modalEmpate.classList.add('hidden');
-    }   
+    } 
 };
-
-buttonClose.addEventListener('click', modalClose);
+btnModalClose.addEventListener('click', modalClose);
 
 let countOne = 0;
 let countTwo = 0;
@@ -285,9 +282,8 @@ const placar = (value) => {
     }
 };
 
-const resetJogo = document.getElementById("reset__jogo");
-resetJogo.addEventListener("click", function () {
-    
+const btnResetJogo = document.getElementById("reset__jogo");
+const resetJogo = () => {
     table = [[' ', ' ', ' ', ' ', ' ', ' ']
             ,[' ', ' ', ' ', ' ', ' ', ' ']
             ,[' ', ' ', ' ', ' ', ' ', ' ']
@@ -302,21 +298,18 @@ resetJogo.addEventListener("click", function () {
     for(let i = 0; i < 7; i++){
         document.getElementById(`coluna${i}`).innerHTML = "";
     }
-    boxJogo.addEventListener('click', makeCheckers);
-});
 
-const resetPlacar = document.getElementById("reset__placar");
-resetPlacar.addEventListener("click", function () {
+    boxJogo.addEventListener('click', makeCheckers);
+};
+btnResetJogo.addEventListener("click", resetJogo);
+
+const btnResetPlacar = document.getElementById("reset__placar");
+const resetPlacar = () => {
     countOne = 0;
     countTwo = 0;
     document.querySelector('#jogador__one').innerText = `${'USA'}: ${0}`
     document.querySelector('#jogador__two').innerText = `${'URSS'}: ${0}`
-});
+};
+btnResetPlacar.addEventListener("click", resetPlacar);
 
-const audioClick = new Audio("sound/click.mp3");
-const audioWin = new Audio("sound/jingle-win-01.mp3");
-
-/*function firstClick() {
-    
-}*/
 //MANOELA
