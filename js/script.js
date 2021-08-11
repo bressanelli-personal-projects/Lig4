@@ -310,14 +310,11 @@ resetJogo.addEventListener("click", function () {
             ,[' ', ' ', ' ', ' ', ' ', ' ']];
 
     firstPlayer();
-
-    nextGamer(actualPlayer)
+    nextGamer(actualPlayer);
 
     for(let i = 0; i < 7; i++){
         document.getElementById(`coluna${i}`).innerHTML = "";
     }
- 
-
 });
 
 const resetPlacar = document.getElementById("reset__placar");
