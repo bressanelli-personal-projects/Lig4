@@ -7,7 +7,7 @@ let table = [[' ', ' ', ' ', ' ', ' ', ' ']
             ,[' ', ' ', ' ', ' ', ' ', ' ']
             ,[' ', ' ', ' ', ' ', ' ', ' ']];
 
-let flag = "E"
+let flag;
 
 //variaveis globais
 //Kelvin
@@ -181,6 +181,9 @@ const makeCheckers = (e) => {
     let idColuna = e.target.id
     let verifyedLines = compareLines(table, parseInt(idColuna[6]), destino.childElementCount-1); 
     if(verifyedLines[0] === true){
+        console.log(verifyedLines[2])
+        placar(verifyedLines[2]);
+        condicaoVitoria(verifyedLines[2]);
         return verifyedLines
     }
 
@@ -193,18 +196,13 @@ const makeCheckers = (e) => {
         }
     }
     if(empate === 7){
-        alert("Empate")
+        condicaoVitoria('empate');
         return 'empate'
     }
     
     nextGamer(actualPlayer); 
-    }    
-    
+    }     
 }
-
-
-
-
 
 
 const gamePlay = (e) => {
@@ -217,7 +215,6 @@ const gamePlay = (e) => {
     //console.log(checker)
     return checker;
 }
-
 
 const nextGamer = (player) => {
     const next = document.getElementById('nextPlayer');
@@ -232,11 +229,99 @@ const nextGamer = (player) => {
     }
 }
 
-
 nextGamer(actualPlayer); 
 
 boxJogo.addEventListener('click', makeCheckers);
 
-
-
 /* roberto */
+
+
+//MANOELA
+
+const modalUSA = document.querySelector('.modalUSA');
+const modalURSS = document.querySelector('.modalURSS');
+const modalEmpate = document.querySelector('.modal__empate');
+
+const condicaoVitoria = (value) => {
+    
+    setTimeout(() => {
+        if(value === 'E'){
+            modalUSA.classList.remove('hidden');
+        }
+        
+        if(value === 'U'){
+            modalURSS.classList.remove('hidden');
+        }
+        
+        if(value === 'empate'){
+            modalEmpate.classList.remove('hidden');
+        }
+    }, 1500);
+
+};
+
+const buttonClose = document.getElementById('container');
+
+const modalClose = (event) => {
+    
+    const idButton = event.target.id;
+    
+    if(idButton === 'btn__one'){
+        modalUSA.classList.add('hidden');
+    }
+    
+    if(idButton === 'btn__two'){
+        modalURSS.classList.add('hidden');
+    }
+    
+    if(idButton === 'btn__three'){
+       modalEmpate.classList.add('hidden');
+    }
+};
+
+buttonClose.addEventListener('click', modalClose);
+
+let countOne = 0;
+let countTwo = 0;
+const placar = (value) => {
+    let pointsPlayerOne = document.querySelector('#jogador__one');
+    let pointsPlayerTwo = document.querySelector('#jogador__two');
+
+    if(value === 'E'){
+        countOne++
+        pointsPlayerOne.innerText = `${'USA'}: ${countOne}`
+    }
+
+    if(value === 'U'){
+        countTwo++
+        pointsPlayerTwo.innerText = `${'URSS'}: ${countTwo}`
+    }
+};
+
+const resetJogo = document.getElementById("reset__jogo");
+resetJogo.addEventListener("click", function () {
+    
+    table = [[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']
+            ,[' ', ' ', ' ', ' ', ' ', ' ']];
+
+    firstPlayer();
+    nextGamer(actualPlayer);
+
+    for(let i = 0; i < 7; i++){
+        document.getElementById(`coluna${i}`).innerHTML = "";
+    }
+});
+
+const resetPlacar = document.getElementById("reset__placar");
+resetPlacar.addEventListener("click", function () {
+    count = 0;
+    document.querySelector('#jogador__one').innerText = `${'USA'}: ${0}`
+    document.querySelector('#jogador__two').innerText = `${'URSS'}: ${0}`
+});
+
+//MANOELA
