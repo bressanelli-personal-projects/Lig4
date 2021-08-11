@@ -11,13 +11,19 @@
 </head>
 <body>
     <header>
+        <div class="nav__container">
+            <input type="checkbox" id="btn__menu">
+            <label id="icone" for="btn__menu">
+                <i class="fas fa-angle-right"></i>
+            </label>
+            <nav class="nav__menu">
+                <a href="/instructions/instructions.html" target="_about" id="instructionLink">COMO JOGAR</a>
+            </nav>
+        </div>
+
         <h1>JOGO LIG-4</h1>
-        <a href="/instructions/instructions.html" target="_about" id="instructionLink">como jogar</a>
     </header>
 
-   
-
-    
     <section>
 
         <div id="container">
@@ -63,7 +69,9 @@
                     <h2>EMPATE!!!</h2>  
                 </div>
             </div>
+
             <div id="boxJogo"></div>
+
         </div>
         
         <div id="nextContainer">
@@ -81,6 +89,7 @@
                 <button type="reset" id="reset__jogo">RESET JOGO</button>
                 <button type="reset" id="reset__placar">RESET PLACAR</button>
             </section>
+
         </div>
 
     </section>
