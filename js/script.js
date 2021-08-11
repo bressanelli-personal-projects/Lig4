@@ -244,7 +244,7 @@ const condicaoVitoria = (value) => {
             modalEmpate.classList.remove('hidden');
         }
     }, 1500);
-
+    boxJogo.removeEventListener('click', makeCheckers);
 };
 
 const buttonClose = document.getElementById('container');
@@ -303,6 +303,7 @@ resetJogo.addEventListener("click", function () {
     for(let i = 0; i < 7; i++){
         document.getElementById(`coluna${i}`).innerHTML = "";
     }
+    boxJogo.addEventListener('click', makeCheckers);
 });
 
 const resetPlacar = document.getElementById("reset__placar");
