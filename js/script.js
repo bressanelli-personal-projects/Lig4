@@ -319,7 +319,8 @@ resetJogo.addEventListener("click", function () {
 
 const resetPlacar = document.getElementById("reset__placar");
 resetPlacar.addEventListener("click", function () {
-    count = 0;
+    countOne = 0;
+    countTwo = 0;
     document.querySelector('#jogador__one').innerText = `${'USA'}: ${0}`
     document.querySelector('#jogador__two').innerText = `${'URSS'}: ${0}`
 });
