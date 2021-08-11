@@ -46,15 +46,17 @@ function compareLines(table, posX, posY){
 
     //trata diagonal_x
     x = posX+3
-    y = posY+3
-    for(let i = 0; i <= 8; i++){
-        if(x >= 0 && y >= 0 && x<6 && y<7){
+    y = posY-3
+    for(let i = 0; i < 8; i++){
+        if(x >= 0 && y >= 0 && x<7 && y<6){
             diagonal_x += table[x][y]
             
         }
         x--
-        y--
+        y++
     }
+    console.log(diagonal_x.split(' '))
+
     if(diagonal_x.includes("UUUU")){
         return [true, 'diagonal_x', 'U']
     }
@@ -63,17 +65,16 @@ function compareLines(table, posX, posY){
     }
 
     //trata diagonal_y
-    x = posX+3
+    x = posX-3
     y = posY-3
     for(let i = 0; i <= 8; i++){
-        if(x >= 0 && y >= 0 && x<6 && y<7){
+        if(x >= 0 && y >= 0 && x<7 && y<6){
             diagonal_y += table[x][y]
 
         }
-        x--
+        x++
         y++
     }
-
     if(diagonal_y.includes("UUUU")){
         return [true, 'diagonal_y', 'U']
     }
