@@ -244,7 +244,7 @@ const condicaoVitoria = (value) => {
             modalEmpate.classList.remove('hidden');
         }
     }, 1500);
-
+    boxJogo.removeEventListener('click', makeCheckers);
 };
 
 const buttonClose = document.getElementById('container');
@@ -264,7 +264,7 @@ const modalClose = (event) => {
     if(idButton === 'btn__three'){
        modalEmpate.classList.add('hidden');
     }
-    boxJogo.removeEventListener('click', makeCheckers);
+    
 };
 
 buttonClose.addEventListener('click', modalClose);
