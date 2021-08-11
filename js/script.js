@@ -264,7 +264,7 @@ const modalClose = (event) => {
     if(idButton === 'btn__three'){
        modalEmpate.classList.add('hidden');
     }
-    
+    boxJogo.removeEventListener('click', makeCheckers);
 };
 
 buttonClose.addEventListener('click', modalClose);
@@ -303,6 +303,7 @@ resetJogo.addEventListener("click", function () {
     for(let i = 0; i < 7; i++){
         document.getElementById(`coluna${i}`).innerHTML = "";
     }
+    boxJogo.addEventListener('click', makeCheckers);
 });
 
 const resetPlacar = document.getElementById("reset__placar");
