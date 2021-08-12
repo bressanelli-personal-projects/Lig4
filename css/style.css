@@ -203,6 +203,9 @@ section {
 
 #reset__jogo:hover, #reset__placar:hover{
     cursor: pointer;
+}
+
+#reset__jogo:active, #reset__placar:active{
     color: var(--color-white);
     background-color: var(--color-black);
 }
