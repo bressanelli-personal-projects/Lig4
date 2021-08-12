@@ -1,4 +1,5 @@
-//variaveis globais
+// variaveis globais ===============
+
 let table = [[' ', ' ', ' ', ' ', ' ', ' ']
             ,[' ', ' ', ' ', ' ', ' ', ' ']
             ,[' ', ' ', ' ', ' ', ' ', ' ']
@@ -8,114 +9,9 @@ let table = [[' ', ' ', ' ', ' ', ' ', ' ']
             ,[' ', ' ', ' ', ' ', ' ', ' ']];
 
 let flag;
-
-//variaveis globais
-//Kelvin
-function compareLines(table, posX, posY){
-
-    let vertical = ""
-    let horizontal = ""
-    let diagonal_x = ""
-    let diagonal_y = ""
-    let x = 0
-    let y = 0
-    
-    //Trata vertical
-    vertical = table[posX].join("")
-    if(vertical.includes("UUUU")){
-        return [true, 'vertical', 'U']
-    }
-    if(vertical.includes("EEEE")){
-        return [true, 'vertical', 'E']
-    }
-
-
-    //Trata horizontal
-    for(let i = 0; i < 7; i++){
-        horizontal += table[i][posY]
-    }
-    if(horizontal.includes("UUUU")){
-        return [true, 'horizontal', 'U']
-    }
-    if(horizontal.includes("EEEE")){
-        return [true, 'horizontal', 'E']
-    }
-
-
-    //trata diagonal_x
-    x = posX+3
-    y = posY-3
-    for(let i = 0; i < 8; i++){
-        if(x >= 0 && y >= 0 && x<7 && y<6){
-            diagonal_x += table[x][y]
-            
-        }
-        x--
-        y++
-    }
-
-    if(diagonal_x.includes("UUUU")){
-        return [true, 'diagonal_x', 'U']
-    }
-    if(diagonal_x.includes("EEEE")){
-        return [true, 'diagonal_x', 'E']
-    }
-
-    //trata diagonal_y
-    x = posX-3
-    y = posY-3
-    for(let i = 0; i <= 8; i++){
-        if(x >= 0 && y >= 0 && x<7 && y<6){
-            diagonal_y += table[x][y]
-
-        }
-        x++
-        y++
-    }
-    if(diagonal_y.includes("UUUU")){
-        return [true, 'diagonal_y', 'U']
-    }
-    if(diagonal_y.includes("EEEE")){
-        return [true, 'diagonal_y', 'E']
-    }
-
-    //cria string diagonal_y
-    return false
-}
-
-//Kelvin
-
-//Manoela
-const boxJogo = document.getElementById('boxJogo');
-
-const criarTabuleiro = () => {
-
-    for(let i = 0; i < 7; i++){
-        const coluna = document.createElement('div');
-        coluna.classList.add('coluna');
-        coluna.id = `${'coluna'}${i}`;
-
-        boxJogo.appendChild(coluna);
-    }
-}
-criarTabuleiro();
-//Manoela
-
-/* roberto */
-
+let countOne = 0;
+let countTwo = 0;
 let actualPlayer;
-
-const firstPlayer = () => {
-    if(Math.floor(Math.random() * 2 + 1)-1 === 0){
-    actualPlayer = true;
-    flag = "E"
-} else {
-    actualPlayer = false;
-    flag = "U"
-}
-}
-
-firstPlayer();
 
 let startDropMobile = {
     '0': -250,
@@ -136,71 +32,107 @@ let startDropDesktop = {
     '5': -25,
     '6': 5
 }
- 
-const makeCheckers = (e) => {
+
+const modalUSA = document.querySelector('.modalUSA');
+const modalURSS = document.querySelector('.modalURSS')
+const boxJogo = document.getElementById('boxJogo');
+const modalEmpate = document.querySelector('.modal__empate');
+const btnModalClose = document.getElementById('container');
+const btnResetJogo = document.getElementById("reset__jogo");
+const btnResetPlacar = document.getElementById("reset__placar");
+const audioJogada = new Audio("sound/sound-click.mp3");
+const audioWin = new Audio("sound/sound-win.mp3");
+const audioReset = new Audio("sound/sound-reset.mp3");
+
+
+
+
+
+// funções =========================
+
+const criarTabuleiro = () => {
+
+    for(let i = 0; i < 7; i++){
+        const coluna = document.createElement('div');
+        coluna.classList.add('coluna');
+        coluna.id = `${'coluna'}${i}`;
+
+        boxJogo.appendChild(coluna);
+    };
+};
+
+const firstPlayer = () => {
+    if(Math.floor(Math.random() * 2 + 1)-1 === 0){
+    actualPlayer = true;
+    flag = "E";
+} else {
+    actualPlayer = false;
+    flag = "U";
+};
+};
+
+const gamePlay = (e) => {
     audioJogada.play();
-    const destino = document.getElementById(e.target.id);
-    //console.log(e.target.id)
+    const destino = document.getElementById(e.target.id);    
     const checker = document.createElement('div');    
-    checker.classList.add('checker') 
-    
+    checker.classList.add('checker');    
    
     if(destino !== null){
         let variavel = destino.childElementCount;
         if(destino.childElementCount < 6) {
             if(actualPlayer){            
-            checker.classList.remove('urss')
+            checker.classList.remove('urss');
             checker.classList.add('usa');                 
-            checker.style.setProperty('--positionUsaMobile', `${startDropMobile[variavel]}px`)                      
-            checker.style.setProperty('--positionUsaDesktop', `${startDropDesktop[variavel]}px`)                      
+            checker.style.setProperty('--positionUsaMobile', `${startDropMobile[variavel]}px`);                     
+            checker.style.setProperty('--positionUsaDesktop', `${startDropDesktop[variavel]}px`);                      
             actualPlayer = false;
             destino.appendChild(checker);            
         } else {
-            checker.classList.remove('usa')
+            checker.classList.remove('usa');
             checker.classList.add('urss');
-            checker.style.setProperty('--positionUrssMobile', `${startDropMobile[variavel]}px`)                
-            checker.style.setProperty('--positionUrssDesktop', `${startDropDesktop[variavel]}px`)                
+            checker.style.setProperty('--positionUrssMobile', `${startDropMobile[variavel]}px`);                
+            checker.style.setProperty('--positionUrssDesktop', `${startDropDesktop[variavel]}px`);                
             actualPlayer = true;
             destino.appendChild(checker);
-        }        
+        };        
         
-    }
+    };
 
     // atualiza tabuleiro
     if(table[e.target.id[6]][5] === " "){
-        table[e.target.id[6]][destino.childElementCount-1] = flag
+        table[e.target.id[6]][destino.childElementCount-1] = flag;
         if(flag === "E"){
-            flag = "U"
+            flag = "U";
         }else{
-            flag = "E"
-        }
-    }
+            flag = "E";
+        };
+    };
 
     // condição verifica ganhador
-    let idColuna = e.target.id
+    let idColuna = e.target.id;
     let verifyedLines = compareLines(table, parseInt(idColuna[6]), destino.childElementCount-1); 
     if(verifyedLines[0] === true){
         placar(verifyedLines[2]);
         condicaoVitoria(verifyedLines[2]);
-        return verifyedLines
-    }
+        return verifyedLines;
+    };
 
     //verifica empate
     let empate = 0
     for(let i = 0; i < 7; i++){
-        let coluna = document.getElementById(`coluna${i}`)
+        let coluna = document.getElementById(`coluna${i}`);
         if(coluna.childElementCount > 5){
-            empate++
-        }
-    }
+            empate++;
+        };
+    };
     if(empate === 7){
         condicaoVitoria('empate');
-        return 'empate'
-    }
+        return 'empate';
+    };
     
     nextGamer(actualPlayer); 
-    }     
-}
+    };     
+};
 
 const nextGamer = () => {
     const next = document.getElementById('nextPlayer');
@@ -212,20 +144,8 @@ const nextGamer = () => {
     } else {
         next.classList.remove('flagUsa');
         next.classList.add('flagUrss');
-    }
-}
-nextGamer(actualPlayer); 
-
-boxJogo.addEventListener('click', makeCheckers);
-
-/* roberto */
-
-
-//MANOELA
-
-const modalUSA = document.querySelector('.modalUSA');
-const modalURSS = document.querySelector('.modalURSS');
-const modalEmpate = document.querySelector('.modal__empate');
+    };
+};
 
 const condicaoVitoria = (value) => {
     
@@ -233,58 +153,55 @@ const condicaoVitoria = (value) => {
         audioWin.play();
         if(value === 'E'){
             modalUSA.classList.remove('hidden');
-        }
+        };
         
         if(value === 'U'){
             modalURSS.classList.remove('hidden');
-        }
+        };
         
         if(value === 'empate'){
             modalEmpate.classList.remove('hidden');
-        }
+        };
     }, 1500);
 
-    boxJogo.removeEventListener('click', makeCheckers);
+    boxJogo.removeEventListener('click', gamePlay);
 };
 
-const btnModalClose = document.getElementById('container');
+
 const modalClose = (event) => {
     const idButton = event.target.id;
     
     if(idButton === 'btn__one'){
         modalUSA.classList.add('hidden');
-    }
+    };
     
     if(idButton === 'btn__two'){
         modalURSS.classList.add('hidden');
-    }
+    };
     
     if(idButton === 'btn__three'){
        modalEmpate.classList.add('hidden');
-    } 
+    };
 };
-btnModalClose.addEventListener('click', modalClose);
 
-let countOne = 0;
-let countTwo = 0;
 const placar = (value) => {
     let pointsPlayerOne = document.querySelector('#jogador__one');
     let pointsPlayerTwo = document.querySelector('#jogador__two');
 
     setTimeout(() => {
         if(value === 'E'){
-            countOne++
-            pointsPlayerOne.innerText = `${'USA'}: ${countOne}`
-        }
+            countOne++;
+            pointsPlayerOne.innerText = `${'USA'}: ${countOne}`;
+        };
     
         if(value === 'U'){
-            countTwo++
-            pointsPlayerTwo.innerText = `${'URSS'}: ${countTwo}`
-        }
+            countTwo++;
+            pointsPlayerTwo.innerText = `${'URSS'}: ${countTwo}`;
+        };
     }, 1500); 
 };
 
-const btnResetJogo = document.getElementById("reset__jogo");
+
 const resetJogo = () => {
     audioReset.play();
     table = [[' ', ' ', ' ', ' ', ' ', ' ']
@@ -300,24 +217,104 @@ const resetJogo = () => {
 
     for(let i = 0; i < 7; i++){
         document.getElementById(`coluna${i}`).innerHTML = "";
-    }
+    };
 
-    boxJogo.addEventListener('click', makeCheckers);
+    boxJogo.addEventListener('click', gamePlay);
 };
-btnResetJogo.addEventListener("click", resetJogo);
 
-const btnResetPlacar = document.getElementById("reset__placar");
 const resetPlacar = () => {
     audioReset.play();
     countOne = 0;
     countTwo = 0;
-    document.querySelector('#jogador__one').innerText = `${'USA'}: ${0}`
-    document.querySelector('#jogador__two').innerText = `${'URSS'}: ${0}`
+    document.querySelector('#jogador__one').innerText = `${'USA'}: ${0}`;
+    document.querySelector('#jogador__two').innerText = `${'URSS'}: ${0}`;
 };
+
+function compareLines(table, posX, posY){
+
+    let linha = "";
+    let x = 0;
+    let y = 0;
+    
+    //Trata vertical
+    linha = table[posX].join("");
+    if(linha.includes("UUUU")){
+        return [true, 'vertical', 'U'];
+    }
+    if(linha.includes("EEEE")){
+        return [true, 'vertical', 'E'];
+    };
+
+    //Trata horizontal
+    linha = "";
+    for(let i = 0; i < 7; i++){
+        linha += table[i][posY];
+    };
+    if(linha.includes("UUUU")){
+        return [true, 'horizontal', 'U'];
+    };
+    if(linha.includes("EEEE")){
+        return [true, 'horizontal', 'E'];
+    };
+
+    //trata diagonal_x
+    linha = "";
+    x = posX + 3;
+    y = posY - 3;
+    for(let i = 0; i < 8; i++){
+        if(x >= 0 && y >= 0 && x<7 && y<6){
+            linha += table[x][y];
+        };
+        x--;
+        y++;
+    };
+    if(linha.includes("UUUU")){
+        return [true, 'diagonal_x', 'U'];
+    };
+    if(linha.includes("EEEE")){
+        return [true, 'diagonal_x', 'E'];
+    };
+
+    //trata diagonal_y
+    linha = "";
+    x = posX - 3;
+    y = posY - 3;
+    for(let i = 0; i <= 8; i++){
+        if(x >= 0 && y >= 0 && x<7 && y<6){
+            linha += table[x][y];
+        };
+        x++;
+        y++;
+    }
+    if(linha.includes("UUUU")){
+        return [true, 'diagonal_y', 'U'];
+    };
+    if(linha.includes("EEEE")){
+        return [true, 'diagonal_y', 'E'];
+    };
+
+    return false
+};
+
+
+
+// calls das funções ==============
+
+criarTabuleiro();
+
+firstPlayer();
+
+nextGamer(); 
+
+
+
+
+// handlers de clique =============
+
+boxJogo.addEventListener('click', gamePlay);
+
+btnModalClose.addEventListener('click', modalClose);
+
+btnResetJogo.addEventListener("click", resetJogo);
+
 btnResetPlacar.addEventListener("click", resetPlacar);
-
-const audioJogada = new Audio("sound/sound-click.mp3");
-const audioWin = new Audio("sound/sound-win.mp3");
-const audioReset = new Audio("sound/sound-reset.mp3");
-
-//MANOELA
