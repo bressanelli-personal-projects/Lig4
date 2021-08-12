@@ -319,7 +319,7 @@ div.flagUrss {
     }
 
     #container, #boxJogo{
-        width: 662px;
+        width: 480px;
         display: flex;
         justify-content: center;
     }
