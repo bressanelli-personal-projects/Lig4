@@ -232,73 +232,67 @@ const resetPlacar = () => {
 
 function compareLines(table, posX, posY){
 
-    let vertical = "";
-    let horizontal = "";
-    let diagonal_x = "";
-    let diagonal_y = "";
+    let linha = "";
     let x = 0;
     let y = 0;
     
     //Trata vertical
-    vertical = table[posX].join("");
-    if(vertical.includes("UUUU")){
+    linha = table[posX].join("");
+    if(linha.includes("UUUU")){
         return [true, 'vertical', 'U'];
     }
-    if(vertical.includes("EEEE")){
+    if(linha.includes("EEEE")){
         return [true, 'vertical', 'E'];
     };
 
-
     //Trata horizontal
+    linha = "";
     for(let i = 0; i < 7; i++){
-        horizontal += table[i][posY];
+        linha += table[i][posY];
     };
-    if(horizontal.includes("UUUU")){
+    if(linha.includes("UUUU")){
         return [true, 'horizontal', 'U'];
     };
-    if(horizontal.includes("EEEE")){
+    if(linha.includes("EEEE")){
         return [true, 'horizontal', 'E'];
     };
 
-
     //trata diagonal_x
+    linha = "";
     x = posX + 3;
     y = posY - 3;
     for(let i = 0; i < 8; i++){
         if(x >= 0 && y >= 0 && x<7 && y<6){
-            diagonal_x += table[x][y];
-            
+            linha += table[x][y];
         };
         x--;
         y++;
     };
-
-    if(diagonal_x.includes("UUUU")){
+    if(linha.includes("UUUU")){
         return [true, 'diagonal_x', 'U'];
     };
-    if(diagonal_x.includes("EEEE")){
+    if(linha.includes("EEEE")){
         return [true, 'diagonal_x', 'E'];
     };
 
     //trata diagonal_y
+    linha = "";
     x = posX - 3;
     y = posY - 3;
     for(let i = 0; i <= 8; i++){
         if(x >= 0 && y >= 0 && x<7 && y<6){
-            diagonal_y += table[x][y];
-
+            linha += table[x][y];
         };
         x++;
         y++;
     }
-    if(diagonal_y.includes("UUUU")){
+    if(linha.includes("UUUU")){
         return [true, 'diagonal_y', 'U'];
     };
-    if(diagonal_y.includes("EEEE")){
+    if(linha.includes("EEEE")){
         return [true, 'diagonal_y', 'E'];
     };
 
-    //cria string diagonal_y
     return false
 };
 
