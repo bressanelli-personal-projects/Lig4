@@ -25,8 +25,11 @@ html,body,div,header,section,h1,h2,h3,p,a,img,button{
     text-decoration: none;
 }
 
-body{
+html, body {
     height: 100%;
+}
+
+body{    
     background-size: 100%;
     background-image: url(../img/background.png); 
     font-family: 'Chakra Petch', sans-serif;
@@ -276,6 +279,9 @@ div.flagUrss {
 }
 
 .copyright{
+    /* position: absolute;
+    bottom: 0;
+    left: 50%; */
     padding: 20px;
     text-align: center;
     font-size: 14px;
@@ -390,5 +396,12 @@ div.flagUrss {
     div#nextPlayer {
         margin-top: 15px;
         margin-left: 0px;
+    }
+
+    .copyright{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
