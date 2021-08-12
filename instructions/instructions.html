@@ -4,20 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lig4 - ColdWar Theme</title>
-
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="./assets/instructions.css">
+    <title>Lig4 - ColdWar Theme</title>
 </head>
 <body>
 
     <header>
-        <h1 id="mainTitle">Lig4 - ColdWar Theme - Instruções</h1>
+        <div class="nav__container">
+            <input type="checkbox" id="btn__menu">
+            <label id="icone" for="btn__menu">
+                <i class="fas fa-angle-right"></i>
+            </label>
+
+            <nav class="nav__menu">
+                <a href="../index.html">VOLTAR AO JOGO</a>
+            </nav>
+        </div>
+
+        <h1>Lig4 - ColdWar Theme - Instruções</h1>
     </header>
 
 
     <section class="container">
-
-        <article id="gamePresentation">
+        <article class="container__presentation">
             <h2>Apresentação</h2>
 
             <p>
@@ -36,7 +47,7 @@
             </figure>
         </article>
 
-        <article id="gameInstructions">
+        <article class="container__instructions">
             <h2>Instruções do Jogo</h2>
 
             <p>
@@ -68,18 +79,14 @@
                 O placar agregado é computado de acordo com as vitórias de cada jogador. Um novo placar pode ser iniciando zerando o atual a partir do botão <em>reset placar</em>.
             </p>
 
-
-        </article>
-        
+        </article>   
     </section>
 
-    <footer id="copyright">
-
+    <footer class="copyright">
         <p>
             &#169 Copyright 2021 - Gravitrips Team by Kenzie Academy Brasil
-        </p>
-        
+        </p>   
     </footer>
-    
+
 </body>
 </html>
