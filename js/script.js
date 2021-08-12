@@ -46,8 +46,6 @@ const audioReset = new Audio("sound/sound-reset.mp3");
 
 
 
-
-
 // funções =========================
 
 const criarTabuleiro = () => {
@@ -117,7 +115,7 @@ const gamePlay = (e) => {
         return verifyedLines;
     };
 
-    //verifica empate
+    // condição verifica empate
     let empate = 0
     for(let i = 0; i < 7; i++){
         let coluna = document.getElementById(`coluna${i}`);
@@ -167,7 +165,6 @@ const condicaoVitoria = (value) => {
     boxJogo.removeEventListener('click', gamePlay);
 };
 
-
 const modalClose = (event) => {
     const idButton = event.target.id;
     
@@ -201,7 +198,6 @@ const placar = (value) => {
     }, 1500); 
 };
 
-
 const resetJogo = () => {
     audioReset.play();
     table = [[' ', ' ', ' ', ' ', ' ', ' ']
@@ -230,7 +226,7 @@ const resetPlacar = () => {
     document.querySelector('#jogador__two').innerText = `${'URSS'}: ${0}`;
 };
 
-function compareLines(table, posX, posY){
+const compareLines = (table, posX, posY) => {
 
     let linha = "";
     let x = 0;
@@ -305,7 +301,6 @@ criarTabuleiro();
 firstPlayer();
 
 nextGamer(); 
-
 
 
 
