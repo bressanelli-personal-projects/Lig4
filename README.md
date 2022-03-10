@@ -12,7 +12,7 @@
   <a href="#description">Descrição</a> <br />
   <a href="#use">Como utilizar</a> <br />
   <a href="#status">Status do Projeto</a> <br />
-  <a href="#deploy">Link do deploy no Vercel</a> <br />
+  <a href="#deploy">Link do deploy</a> <br />
   <a href="#tech">Tecnologias Utilizadas</a> <br />
   <a href="#author">Autor</a> <br />
 </p>
@@ -44,7 +44,7 @@ Projeto já finalizado e funcional.
 <h2 id="deploy">Link do deploy com o aplicativo funcional</h2>
 <a href="https://rbressanelli.github.io/Game_Lig4_ColdWar_edition/">LIG 4</a>
 
-<h2 id="tech">🛠 Tecnologias</h2>
+<h2 id="tech">🛠 Tecnologias e ferramentas</h2>
 <ul>
   <li>HTML</li>
   <li>CSS</li>
